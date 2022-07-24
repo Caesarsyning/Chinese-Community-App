@@ -22,12 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = '78ee4679388cecb3385ef132b71e0d0f65e3708b4e36a047'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG=(os.environ.get(DEBUG_VALUE)=='True')
-DEBUG = True
+DEBUG=(os.environ.get(DEBUG_VALUE)=='True')
+# DEBUG = True
 
 ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','127.0.0.1']
 
@@ -151,18 +150,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
-# AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
-# AWS_STORAGE_BUCKET_NAME= os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME= os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-EMAIL_HOST_USER="siyuan.ning@menlo.edu"
-EMAIL_HOST_PASSWORD="cxigfmhjckuwyqbq"
-AWS_ACCESS_KEY_ID="AKIA26USMR5HIY322FM4"
-AWS_SECRET_ACCESS_KEY="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"
-AWS_STORAGE_BUCKET_NAME ="my-first-web-server"
 
 
 AWS_S3_FIE_OVERWRITE = False
