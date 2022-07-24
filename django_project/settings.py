@@ -151,11 +151,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER="siyuan.ning@menlo.edu"
-EMAIL_HOST_PASS="fyqmlrpfweyhlvmh"
+# EMAIL_HOST_USER="siyuan.ning@menlo.edu"
+# EMAIL_HOST_PASS="fyqmlrpfweyhlvmh"
 
-# EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-# EMAIL_HOST_PASS = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
