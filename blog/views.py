@@ -13,7 +13,7 @@ from django.views.generic import (
 from .models import Post
 
 def confirm(request):
-    return HttpResponse('<p>iTTf0SsOPg20F3RC623k8ps5KyHWgcPKQq6buHfT068.HIrdzCNgiv-X0ysWoBH3t5nB7ioPPpJPyQrYnf7XqAs</p>')
+    return HttpResponse('<p>cTsrODfB9qJ3wpWYifX4HEsjpeTFfXxjMAijs-U0bOc.HIrdzCNgiv-X0ysWoBH3t5nB7ioPPpJPyQrYnf7XqAs</p>')
 
 def home(request):
     context ={
