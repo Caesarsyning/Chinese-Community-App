@@ -1,0 +1,111 @@
+.body{
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #f0f2f5;
+}
+main{
+    padding-top:60px;
+    padding-left: 100px;
+   
+}
+main .row{
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 25px;
+    row-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-right: -5px;
+    margin-left: 30px;
+}
+@media (max-width:1000px){
+    main .row{
+        grid-template-columns: 1fr;
+        padding-right: 100px;
+        justify-content: center;
+    }
+    .intro{
+        display: grid;
+        grid-template-rows: 100px 100px;
+    }
+    main{
+        padding-top:30px;
+        padding-left: 210px;
+    }
+   
+}
+
+
+.title{
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: italic;
+    font-size: 65px;
+}
+@media (min-width:1000px){
+.intro{
+    display: grid;
+    grid-template-rows: 100px 100px;
+    padding-left: 50px;
+    }
+}
+.intro .detail{
+    width: 450px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 27px;
+    font-weight: 400;
+    margin-left: 10px;
+}
+.login-box .form-control {
+    line-height: 1.7;
+}
+.login-box{
+    padding-right: 100px;
+}
+.login-box .form-group{
+    margin-bottom: 0.7rem;
+}
+.login-in-box{
+    padding: 25px 40px 30px 40px;
+    border:1px solid rgb(185, 183, 183);
+    border-radius: 10px;
+    width: 410px;
+    height: 380px; 
+    background-color: white;
+}
+
+.login-box fieldset{
+    min-width:0;
+    margin:0;
+    border:0
+}
+.login-in-box .btn-outline-info{
+    font-weight: 500;
+    height: 44px;
+    width:100%;
+    color:white;
+    background-color: rgb(1, 106, 181);
+    border:none;
+    opacity:1;
+}
+.login-in-box .btn-outline-info:hover{
+    opacity:0.7;
+    background-color: rgb(1, 106, 181);
+}
+.or-session .btn-outline-info{
+    background-color: #2aa3b6;
+    opacity:1;
+}
+.or-session .btn-outline-info:hover{
+    background-color: #2aa3b6;
+    opacity:0.7;
+}
+.or-text{
+    display: inline-block;
+}
+.or-bar{
+    width: 45%;
+    display: inline-block;
+}
+
+
+

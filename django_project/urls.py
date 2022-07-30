@@ -26,11 +26,10 @@ urlpatterns = [
     path('register/',user_views.register,name="register"),
     path('profile/',user_views.profile,name="profile"),
     path('',include('blog.urls')),
-    path('.well-known/acme-challenge/cTsrODfB9qJ3wpWYifX4HEsjpeTFfXxjMAijs-U0bOc/',
-        blog_views.confirm,name='confirm'),
+    # path('.well-known/acme-challenge/cTsrODfB9qJ3wpWYifX4HEsjpeTFfXxjMAijs-U0bOc/',
+    #     blog_views.confirm,name='confirm'),
     # django provides login and logout view(form) for us, but we still need to implement the html template
     path('login/',auth_views.LoginView.as_view(template_name ='users/login.html'),name="login"),
-    path('logout/',auth_views.LogoutView.as_view(template_name ='users/logout.html'),name="logout"),
     path('password-reset/',
         auth_views.PasswordResetView.as_view(template_name ='users/password_reset.html'),
         name="password_reset"),
