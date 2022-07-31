@@ -27,8 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',user_views.register,name="register"),
     path('profile/',user_views.profile,name="profile"),
-    path('',include('blog.urls')),
-    # path('',include('home.urls')),
+    # path('',include('blog.urls')),
+    path('',include('home.urls')),
     # django provides login and logout view(form) for us, but we still need to implement the html template
     # quote for customize loginView: https://www.youtube.com/watch?v=8V-mscw6H64
     path('login/',auth_views.LoginView.as_view(template_name ='user/login.html'),name="login"),
