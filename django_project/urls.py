@@ -19,6 +19,7 @@ from django.urls import path,include
 from users import views as user_views
 from blog import views as blog_views
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.conf.urls.static import static
 from home import views as home_view
 
