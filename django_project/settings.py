@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 DEBUG = False
 
-ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com']
 
 
 # Application definition
