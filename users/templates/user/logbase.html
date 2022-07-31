@@ -32,34 +32,8 @@
                 </div>
             </div>
             <div class="login-box">
-                <div class="login-in-box">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div class ="alert alert-{{message.tags}}">
-                                    {{message}}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
-                        <fieldset class ="form-group">
-                            {{ form|crispy}}
-                        </fieldset>
-                        <div class = "form-group" style="margin-bottom:0; margin-top:20px;">
-                            <button class ="btn btn-outline-info" type="submit">Login</button>
-                        </div>
-                    </form>
-                    <div class="or-session">
-                        <hr class="or-bar">
-                        <div class="or-text">or</div>
-                        <hr class="or-bar">
-                        <div>
-                            <a href="{% url 'register' %}"><button class="btn btn-outline-info">Sign In With Email</button></a>
-                        </div>
-                    </div> 
-                </div>
-                
-            </div>    
+                {% block content %} {% endblock content%}
+            </div>
         </div>
         
     </main>

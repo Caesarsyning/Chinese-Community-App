@@ -1,0 +1,89 @@
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+body .main{
+    font-family: 'Josefin Sans', sans-serif;
+    height: 750px;
+    padding-top: 175px;
+    background-color: #f0f2f5;
+    color: rgb(22, 21, 29);
+}
+.main-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 45px;
+    place-items: center;
+    grid-template-columns: 960px ;
+    align-items: center;
+    justify-content: center;
+}
+.main-grid h6{
+    color: #000;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.main-grid h2{
+    color: #000;
+    font-size: 45px;
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.intro-div,
+.intro-div .title-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-div{
+    width: 450px;
+}
+.search-input{
+    line-height: 50px;
+    width: 100%;
+    padding-left: 18px;
+    font-size: 25px;
+    border-radius: 20px;
+    border: 1px solid rgb(227, 225, 225);
+}
+.section-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.sections{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    column-gap: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: center;
+}
+.sections .icon-div{
+    font-size: 50px;
+    height: 135px;
+    width: 135px;
+    border-radius: 50%;
+}
+.sections .icon-div:hover{
+    transform: scale(1.15);
+}
+.icon-text{
+    font-size: 17px;
+    text-align: center;
+    color:black;
+}
+.fa-cart-shopping, .fa-house-chimney,
+.fa-graduation-cap, .fa-calendar{
+    color:black;
+    background-color: #f0f2f5;
+}

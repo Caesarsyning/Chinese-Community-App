@@ -18,7 +18,7 @@ main .row{
     margin-right: -5px;
     margin-left: 30px;
 }
-@media (max-width:1000px){
+@media (max-width:1001px){
     main .row{
         grid-template-columns: 1fr;
         padding-right: 100px;
@@ -64,20 +64,21 @@ main .row{
 .login-box .form-group{
     margin-bottom: 0.7rem;
 }
-.login-in-box{
+.login-in-box, .login-box .content-section{
     padding: 25px 40px 30px 40px;
     border:1px solid rgb(185, 183, 183);
     border-radius: 10px;
     width: 410px;
-    height: 380px; 
     background-color: white;
 }
+
 
 .login-box fieldset{
     min-width:0;
     margin:0;
     border:0
 }
+.btn-signup .btn-outline-info,
 .login-in-box .btn-outline-info{
     font-weight: 500;
     height: 44px;
@@ -87,6 +88,7 @@ main .row{
     border:none;
     opacity:1;
 }
+.btn-signup .btn-outline-info:hover,
 .login-in-box .btn-outline-info:hover{
     opacity:0.7;
     background-color: rgb(1, 106, 181);

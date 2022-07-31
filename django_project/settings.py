@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','127.0.0.1']
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'home.apps.HomeConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'storages',
+    'fontawesomefree'
 ]
 
 MIDDLEWARE = [
@@ -142,7 +144,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK =  'bootstrap4'
 
-LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'login'
 

@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 from django.views.generic import (
     ListView,
     DetailView, 
@@ -12,15 +11,13 @@ from django.views.generic import (
 )
 from .models import Post
 
-# def confirm(request):
-#     return HttpResponse('<p>cTsrODfB9qJ3wpWYifX4HEsjpeTFfXxjMAijs-U0bOc.HIrdzCNgiv-X0ysWoBH3t5nB7ioPPpJPyQrYnf7XqAs</p>')
+
 
 def home(request):
     context ={
         'posts': Post.objects.all()
     }
     return render(request,'blog/home.html',context)
-
 
 class PostListView(ListView):
     model = Post
