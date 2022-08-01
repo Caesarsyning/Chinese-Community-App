@@ -22,9 +22,8 @@
             <hr class="or-bar">
             <div class="or-text">or</div>
             <hr class="or-bar">
-            <div ></div>
-                <!-- <a href="{% url 'register' %}"><button class="btn btn-outline-info">Sign In With Email</button></a> -->
-                <button id="my-signin2" class="btn btn-outline-info">Sign In With Email</button>
+            <div id="my-signin2"></div>
+            <a href="{% url 'register' %}"><button class="btn btn-outline-info">Sign Up</button></a>
             <script>
                 function onSuccess(googleUser) {
                   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
