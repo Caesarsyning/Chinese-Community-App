@@ -156,28 +156,82 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
-SERVER_EMAIL = 'root@django'
+DEFAULT_FROM_EMAIL = 'server@example.com'
+
+SERVER_EMAIL = 'server@example.com'
+
+ADMINS = (
+    ('Caesar','siyuan.ning@menlo.edu')
+)
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s [%(asctime)s] %(module)s %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+                 '()': 'django.utils.log.RequireDebugFalse',
+        }
+    },
     'handlers': {
         'console': {
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
+            'formatter': 'simple'
         },
+        'file': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/var/www/logs/ibiddjango.log',
+            'maxBytes': 1024000,
+            'backupCount': 3,
+        },
+        'sql': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/var/www/logs/sql.log',
+            'maxBytes': 102400,
+            'backupCount': 3,
+        },
+        'commands': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': '/var/www/logs/commands.log',
+            'maxBytes': 10240,
+            'backupCount': 3,
+        },
+        'mail_admins': {
+             'level': 'ERROR',
+             'class': 'django.utils.log.AdminEmailHandler'
+        }
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+            'handlers': ['file', 'console', 'mail_admins'],
+            'propagate': True,
+            'level': 'DEBUG',
         },
-    },
+        'django.db.backends': {
+            'handlers': ['sql', 'console'],
+            'propagate': False,
+            'level': 'WARNING',
+        },
+        'scheduling': {
+            'handlers': ['commands', 'console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+    }
 }
 
 
-
-# EMAIL_HOST_USER="siyuan.ning@menlo.edu"
-# EMAIL_HOST_PASS="fyqmlrpfweyhlvmh"
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
