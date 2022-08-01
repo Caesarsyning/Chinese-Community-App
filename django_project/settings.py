@@ -156,12 +156,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
-DEFAULT_FROM_EMAIL = 'server@example.com'
 
-SERVER_EMAIL = 'server@example.com'
+SERVER_EMAIL = 'django@my-domain.example'
 
 ADMINS = (
-    ('Caesar','siyuan.ning@menlo.edu')
+    ('Caesar','siyuan.ning@menlo.edu'),
 )
 
 LOGGING = {
