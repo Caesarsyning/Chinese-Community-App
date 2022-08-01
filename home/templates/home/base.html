@@ -44,8 +44,16 @@
             </div>
             <div class="right-sec">
                 <div class="icon-div">
-                    <a href="{% url 'logout' %}"><i class="fa-solid fa-star"></i></a>
-                    <!-- <a class="nav-item nav-link" href="{% url 'logout'%}">logout</a> -->
+                    <a href="{% url 'logout' %}" onclick="signOut();"><i class="fa-solid fa-star"></i></a>
+                        <script>
+                        function signOut() {
+                            var auth2 = gapi.auth2.getAuthInstance();
+                            auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                            });
+                        }
+                        </script>
+                    
                 </div>
                  <!-- star logo -->
                 <div class="profile-logo">

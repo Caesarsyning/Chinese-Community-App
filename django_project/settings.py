@@ -53,6 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'fontawesomefree',
+    'django.contrib.sites', # <-- add the sites app here
+    # apps needed for django all auth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # add the below app for google authentication to work
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -98,6 +105,13 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    # django's inbuild authentication backend
+    'django.contrib.auth.backends.ModelBackend',
+
+    # django's allauth authentication backend
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -243,6 +257,9 @@ AWS_ACCESS_KEY_ID= os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY= os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME= os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
+SITE_ID = 1
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('GOOGLE_OAUTH2_CLIENT_ID')
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get('GOOGLE_OAUTH2_CLIENT_SECRET')
 
 AWS_S3_FIE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
