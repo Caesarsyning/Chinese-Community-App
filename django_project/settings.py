@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 import django_heroku
 import warnings
+import logging
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -155,6 +156,26 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
+SERVER_EMAIL = 'root@django'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
+
+
+
 # EMAIL_HOST_USER="siyuan.ning@menlo.edu"
 # EMAIL_HOST_PASS="fyqmlrpfweyhlvmh"
 
@@ -171,7 +192,7 @@ AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATICFILES_STORAGE = 'my_project.storage.WhiteNoiseStaticFilesStorage'
+
 django_heroku.settings(locals())
 
 # Activate Django-Heroku.
