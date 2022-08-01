@@ -15,6 +15,10 @@ import warnings
 import logging
 from pathlib import Path
 
+# SSL redirect http to https
+SECURE_SSL_REDIRECT = True
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
