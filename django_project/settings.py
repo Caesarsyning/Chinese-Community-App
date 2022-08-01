@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 import django_heroku
+
 import warnings
 import logging
 from pathlib import Path
@@ -31,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
+DEBUG = (os.environ.get('DEBUG_VALUE') == "False")
 
 WHITENOISE_USE_FINDERS = True
 # warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
