@@ -68,6 +68,10 @@ body .main{
     padding-bottom: 30px;
     justify-content: center;
 }
+a {
+    display: block;
+    text-align: center;
+}
 .sections .icon-div{
     font-size: 50px;
     height: 135px;
@@ -76,6 +80,7 @@ body .main{
 }
 .sections .icon-div:hover{
     transform: scale(1.15);
+    background-color: #f0f2f5;
 }
 .icon-text{
     font-size: 17px;
