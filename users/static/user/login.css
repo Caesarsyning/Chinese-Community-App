@@ -78,20 +78,20 @@ main .row{
     margin:0;
     border:0
 }
-.btn-signup .btn-outline-info,
-.login-in-box .btn-outline-info{
+
+.form-group .login{
     font-weight: 500;
     height: 44px;
     width:100%;
     color:white;
-    background-color: rgb(1, 106, 181);
+    background-color: rgb(3, 99, 168);
     border:none;
-    opacity:1;
+    opacity:0.9;
+    transition: background-color 0.3s;
 }
-.btn-signup .btn-outline-info:hover,
-.login-in-box .btn-outline-info:hover{
-    opacity:0.7;
-    background-color: rgb(1, 106, 181);
+.form-group .login:hover{
+    opacity: 1;
+    background-color: rgb(2, 93, 158);
 }
 .or-session .btn-outline-info{
     background-color: #2aa3b6;

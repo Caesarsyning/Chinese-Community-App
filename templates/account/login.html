@@ -1,3 +1,4 @@
+{% load socialaccount %}
 {% load static %}
 {% load crispy_forms_tags %}
 <!-- load static is to load the css file from the static -->
@@ -30,13 +31,36 @@
     <main role="main">
         <div class="row">
             <div class="intro">
-                <h1 class="title">Community</h1>
+                <h1 class="title">AsPlanet</h1>
                 <div class="detail">
                     <p>Our app aims to improve informaiton sharing and enhance resource use efficiency.</p>
                 </div>
             </div>
             <div class="login-box">
-                {% block content %} {% endblock content%}
+                <div class="login-in-box">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class ="alert alert-{{message.tags}}">
+                                    {{message}}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <fieldset class ="form-group">
+                            {{ form|crispy}}
+                        </fieldset>
+                        <div class = "form-group" style="margin-bottom:0; margin-top:20px;">
+                            <button class ="btn btn btn-lg btn-block login" type="submit">Login</button>
+                        </div>
+                    </form>
+                    <div class="or-session">
+                        <hr class="or-bar">
+                        <div class="or-text">or</div>
+                        <hr class="or-bar">
+                        <a href="{% provider_login_url 'google' %}" class="btn btn btn-danger btn-lg btn-block" role="button" aria-pressed="true" >Sign in with Gmail</a>
+                    </div> 
+                </div>
             </div>
         </div>
         
@@ -51,3 +75,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
+

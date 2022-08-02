@@ -10,27 +10,7 @@ from django.http import HttpResponse
 
 def logout_view(request):
     logout(request)
-    messages.success(request,f'Your account has been logged out.')
-    return redirect('login')
-
-@login_required
-def home(request):
-    return render(request,'user/home.html')
-
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterform(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request,f'Your account has been created!')
-            new_user = authenticate(username=username,password=form.cleaned_data['password1'])
-            login(request,new_user)
-            return redirect('home')
-    else:       
-        form = UserRegisterform()
-    return render(request,'user/register.html',{'form':form})
-
+    return redirect('account_login')
 
 
 

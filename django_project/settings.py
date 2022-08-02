@@ -36,7 +36,7 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 
 WHITENOISE_USE_FINDERS = True
 # warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
-ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com']
+ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
 
 
 # Application definition
@@ -114,6 +114,20 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -165,10 +179,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK =  'bootstrap4'
-
+LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'home'
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'account_login'
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
