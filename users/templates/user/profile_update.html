@@ -1,0 +1,64 @@
+{% extends "home/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="position-fixed top-70 bottom-0 start-0 d-flex flex-column flex-shrink-0 p-3 text-white bg-org"
+    style="width: 280px;">
+    <img src="{{ user.profile.image.url }}" alt="" width="200" height="200"
+        class="rounded-circle flex-shrink-0 mx-auto my-3 d-block"
+        style="border: 0.5rem solid rgba(255, 255, 255, 0.2);">
+    <ul class="nav nav-pills flex-column mb-auto mt-5">
+        <li class="nav-item">
+            <!-- <a href="#" class="nav-link active" aria-current="page"> -->
+            <a href="#" class="nav-link text-nav fs-4">
+                Posts
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-nav fs-4">
+                Liked
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-nav fs-4">
+                Starred
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="text-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>Settings</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Password</a></li>
+            <li><a class="dropdown-item" href="#">Report</a></li>
+            <li><a class="dropdown-item" href="#">Privacy</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+    </div>
+</div>
+<div id="main">
+    <div class="container" style="min-width: 650px;padding: 30px 30px;">
+        <form method="POST" enctype="multipart/form-data" style="line-height: 1.5; font-size: 15px;">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-center">Profile Update</legend>
+                <div class="d-flex text-start justify-content-center ">
+                    <div class="row gx-5 gy-3 col-8 justify-content-center">
+                        {{ u_form|crispy}}  
+                        {{ p_form|crispy}} 
+                        <div class="form-group" >
+                            <button class="btn btn-danger" type="submit">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

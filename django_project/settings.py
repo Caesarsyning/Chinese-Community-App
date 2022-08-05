@@ -43,7 +43,6 @@ ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
     'crispy_forms',
@@ -128,6 +127,14 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+ACCOUNT_FORMS = {'login': 'users.forms.MyCustomLoginForm'}
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_SESSION_REMEMBER= False
+#django-allauth registraion settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =7
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

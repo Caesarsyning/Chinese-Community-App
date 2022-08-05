@@ -1,0 +1,26 @@
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+body{
+    font-family: 'Josefin Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+#main{
+    padding-left: 280px;
+    padding-top: 70px;
+}
+.top-70{
+    top: 70px;
+  }
+.bg-org{
+    background-color: rgb(189, 93, 56);
+}
+.text-nav{
+    color:rgba(255, 255, 255, 0.55)
+}
+.text-nav:hover{
+    color:rgba(255, 255, 255, 1)
+}

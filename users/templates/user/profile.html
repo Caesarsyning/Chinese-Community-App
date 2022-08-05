@@ -1,28 +1,76 @@
-{% extends "blog/base.html" %}
+{% extends "home/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<!-- this user does not need to pass in, it gives the current user variable which built in django -->
-    <!-- <h1>{{ user.username }}</h1> -->
-    <div class="content-section">
-        <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-          <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
-          </div>
-        </div>
-        <!-- the enctype is for the image to load to 
-            the form and store the uploaded image properly -->
-        <form method="POST" enctype="multipart/form-data"> 
-            {% csrf_token %}
-            <fieldset class ="form-group">
-                <legend class="border-bottom mb-4">Profile Info</legend>
-                {{ u_form|crispy}}
-                {{ p_form|crispy}}
-            </fieldset>
-            <div class = "form-group">
-                <button class ="btn btn-outline-info" type="submit">Update</button>
+<div class="position-fixed top-70 bottom-0 start-0 d-flex flex-column flex-shrink-0 p-3 text-white bg-org" style="width: 280px;">
+    <img src="{{ user.profile.image.url }}" 
+        alt="" width="200" height="200" class="rounded-circle flex-shrink-0 mx-auto my-3 d-block"
+        style="border: 0.5rem solid rgba(255, 255, 255, 0.2);">
+    <ul class="nav nav-pills flex-column mb-auto mt-5">
+      <li class="nav-item">
+        <!-- <a href="#" class="nav-link active" aria-current="page"> -->
+        <a href="#" class="nav-link text-nav fs-4">
+          Posts
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-nav fs-4">
+          Liked
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link text-nav fs-4">
+          Starred
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <div class="dropdown">
+      <a href="#" class="text-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <strong>Settings</strong>
+      </a>
+      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <li><a class="dropdown-item" href="#">Password</a></li>
+        <li><a class="dropdown-item" href="#">Report</a></li>
+        <li><a class="dropdown-item" href="#">Privacy</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Sign out</a></li>
+      </ul>
+    </div>
+</div>
+<div id="main">
+    <div class="container py-3 ps-5" style="min-width: 650px;" >
+        <div class="container text-start">
+            <div class="row gx-4">
+                <div class="col-4 ps-3">
+                    <div class="fs-1">{{user.username}}</div>
+                </div>
+                <div class="col-4 text-end">
+                    <a href="{% url 'profile_update'%}"><button type="button" class="btn btn-secondary rounded-circle">Edit</button></a>
+                </div>
             </div>
-        </form>
-      </div>
-{% endblock content%}
+            <div class="col-4 ps-2">
+                <div class="p-1 ">Name: {{user.profile.name}} </div>
+            </div>
+            <div class="row gx-4 gy-2 ps-2">
+                <div class="col-4">
+                    <div class="p-1 ">Year: {{user.profile.year}} </div>
+                </div>
+                <div class="col-4">
+                    <div class="p-1 ">Email: {{user.email}}</div>
+                </div>
+            </div>
+            <div class="row gx-4 gy-2 ps-2">
+                <div class="col-12">
+                    <div class="p-1 ">Bio: {{user.profile.bio}}</div>
+                </div>
+            </div> 
+        </div>
+        <hr>    
+        {% block child %}
+        {% endblock child %}
+
+    </div>
+    
+</div>
+
+{% endblock content %}

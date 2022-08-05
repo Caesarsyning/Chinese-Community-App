@@ -38,18 +38,31 @@
             </div>
             <div class="login-box">
                 <div class="login-in-box">
-                    <div class = "form-group" style="margin-bottom:0; margin-top:20px;">
-                        <a href="{% url 'account_login' %}"><button class ="btn btn btn-lg btn-block login">Back</button></a>
-                    </div>
-                <div class="or-session">
-                    <hr class="or-bar">
-                    <div class="or-text">or</div>
-                    <hr class="or-bar">
-                    <form method="post">
+                    <form method="POST">
                         {% csrf_token %}
-                        <button class="btn btn btn-danger btn-lg btn-block" type="submit">Continue Gmail Login</button>
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class ="alert alert-{{message.tags}}">
+                                    {{message}}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <fieldset class ="form-group">
+                            {{ form|crispy}}
+                        </fieldset>
+                        <div class = "form-group" style="margin-bottom:0; margin-top:20px;">
+                            <button class ="btn btn btn-lg btn-block login" type="submit">Login</button>
+                        </div>
                     </form>
-                </div> 
+                    <div class="or-session">
+                        <hr class="or-bar">
+                        <div class="or-text">or</div>
+                        <hr class="or-bar">
+                        <form action="{% provider_login_url 'google' %}" method="post">
+                            {% csrf_token %}
+                            <button class="btn btn btn-danger btn-lg btn-block" type="submit">Sign in with Gmail</button>
+                          </form>
+                    </div> 
                 </div>
             </div>
         </div>
