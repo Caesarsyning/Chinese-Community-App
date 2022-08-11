@@ -2,18 +2,91 @@ a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
+a:current{
+    border: 1 solid gray;
+    background-color: red;
+}
+@media (min-width:992px){
+    .sidebar-position{
+    position: fixed;
+    top: 150px;
+    right:0px;
+    left:auto;
+    bottom: auto;
+}
+}
+.navbar{
+    padding: 0;
+}
+.navbar a,
+.offcanvas a{
+    text-align: center;
+}
+.resale-home .card img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+div {
+    word-wrap: break-word;
+  }
+.side-bar{
+    width: 100px;
+    padding: 70px 5px 20px 5px;
+}
+.sidebar-img{
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border: 0.5rem solid rgba(255, 255, 255, 0.2);
+} 
 body{
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: Arial;
     margin: 0;
     padding: 0;
-    background-color: #f0f2f5;
+    background-color: white;
 }
 #main{
-    padding-left: 280px;
-    padding-top: 70px;
+    padding-left: 100px;
+    padding-top: 5px;
+    padding-bottom: 60px;
 }
+@media (max-width:576px){
+    #main{
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+    .card-body p{
+    margin-bottom: 0.5rem;
+    }
+    #prof-pic{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .navbar {
+        padding: 0;
+    }
+}
+@media (min-width:576px){
+    #prof-pic{
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+    }
+}
+.top-55{
+    top: 55px;
+  }
 .top-70{
-    top: 70px;
+    top: 55px;
   }
 .bg-org{
     background-color: rgb(189, 93, 56);
@@ -23,4 +96,28 @@ body{
 }
 .text-nav:hover{
     color:rgba(255, 255, 255, 1)
+}
+
+.fade.show {
+    opacity: 0.3;
+}
+.offcanvas {
+    --bs-offcanvas-width: 162px;
+}
+
+.search-input{
+    flex:1;
+    height: 50px;
+    padding-left: 10px;
+    margin-right: 0;
+    font-size: 16px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(192,192,192);
+    border-radius: 2px;
+    box-shadow: inset 1px 2px 3px rgba(0,0,0,0.05);
+    min-width: 0;
+}
+.reply .dropdown-menu{
+    min-width: 25rem;
 }

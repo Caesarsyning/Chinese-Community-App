@@ -1,0 +1,17 @@
+{% extends "event/base.html" %}
+{% block child %}
+{% for post in posts %}
+<article class="media content-section">
+    <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2 d-inline-block" href="#">{{ post.author }}</a>
+            <small class="text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
+            <strong id="answered">{{post.answered}}</strong>
+        </div>
+        <h2><a class="article-title d-inline-block" href="{% url 'event-post-detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content"><br>description:{{ post.description }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock child%}

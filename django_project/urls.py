@@ -24,6 +24,10 @@ urlpatterns = [
     path('', include('allauth.urls')),
     path('',include('home.urls')),
     path('users/',include('users.urls')),
+    path('housing/',include('housing.urls')),
+    path('resale/',include('resale.urls')),
+    path('course/',include('course.urls')),
+    path('event/',include('event.urls'))
 ]
 
 

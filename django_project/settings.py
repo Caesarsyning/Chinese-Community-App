@@ -41,8 +41,11 @@ ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
 
 
 # Application definition
-
 INSTALLED_APPS = [
+    'event.apps.EventConfig',
+    'course.apps.CourseConfig',
+    'resale.apps.ResaleConfig',
+    'housing.apps.HousingConfig',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
     'crispy_forms',
@@ -61,8 +64,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # add the below app for google authentication to work
     'allauth.socialaccount.providers.google',
+    'django.contrib.postgres',
 ]
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -271,7 +274,10 @@ LOGGING = {
     }
 }
 
-
+POST_CATEGORY_CHOICES = (
+     ("ask", "ask"),
+    ("bid", "bid"),
+)
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')

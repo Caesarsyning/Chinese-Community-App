@@ -7,17 +7,12 @@ a:active { text-decoration: none; }
     top:0;
     left:0;
     right: 0;
-    height: 70px;
     background-color: #fff;
     border-bottom: 1px solid rgb(211, 208, 208);
     z-index: 100;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 0;
 }
-.header-bar{
-    display: flex;
-    justify-content: space-between;
-}
+
 .right-sec,
 .left-sec{
     height: 70px;
@@ -57,18 +52,6 @@ a:active { text-decoration: none; }
 .fa-house{
     color: #000;
 }
-.fa-star{
-    color: rgb(235, 231, 4);
-}
-/* 
-.right-sec{
-    width: 300px;
-    padding-right: 10px;
-    display: flex;
-    flex-shrink: 0;
-    column-gap: 20px;
-    align-items: center;
-} */
 
 .profile-logo{
     display: flex;

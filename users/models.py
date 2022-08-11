@@ -10,10 +10,14 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
     name = models.CharField(default='Name',max_length=50)
     year = models.CharField(default='',max_length=20)
-    bio = models.CharField(default='',max_length=255)
+    bio = models.TextField(blank=True,null=True)
     image = models.ImageField(default='default.jpg',upload_to='profile_pics')
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    # def get_absolute_url(self):
+    #     # this the url to this post detail page using primarykey of this post
+    #     return reverse('profile', kwargs={'pk':self.pk})
 
     def save(self, *args, **kwargs):
         if self.pk is None:

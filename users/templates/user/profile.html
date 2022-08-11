@@ -1,76 +1,121 @@
-{% extends "home/base.html" %}
+{% extends "user/profilebase.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="position-fixed top-70 bottom-0 start-0 d-flex flex-column flex-shrink-0 p-3 text-white bg-org" style="width: 280px;">
-    <img src="{{ user.profile.image.url }}" 
-        alt="" width="200" height="200" class="rounded-circle flex-shrink-0 mx-auto my-3 d-block"
-        style="border: 0.5rem solid rgba(255, 255, 255, 0.2);">
-    <ul class="nav nav-pills flex-column mb-auto mt-5">
-      <li class="nav-item">
-        <!-- <a href="#" class="nav-link active" aria-current="page"> -->
-        <a href="#" class="nav-link text-nav fs-4">
-          Posts
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-nav fs-4">
-          Liked
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-nav fs-4">
-          Starred
-        </a>
-      </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="text-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <strong>Settings</strong>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Password</a></li>
-        <li><a class="dropdown-item" href="#">Report</a></li>
-        <li><a class="dropdown-item" href="#">Privacy</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+<nav class="navbar navbar-expand-sm">
+  <div class="collapse navbar-collapse">
+    <div class="position-fixed top-55 bottom-0 start-0 d-flex flex-column flex-shrink-0 text-white bg-org side-bar">
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <!-- <a href="#" class="nav-link active" aria-current="page"> -->
+          <a href="#" class="nav-link text-nav mt-3 fs-4">
+            <i class="fa-solid fa-blog"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-nav mt-3 fs-5">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="nav-link text-nav mt-3 fs-5">
+            <i class="fa-solid fa-star"></i>
+          </a>
+        </li>
       </ul>
+      <hr>
+      <div class="dropup">
+        <a href="#" class="text-center text-white text-decoration-none fs-4" id="dropdownUser1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gear"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">Password</a></li>
+          <li><a class="dropdown-item" href="#">Report</a></li>
+          <li><a class="dropdown-item" href="#">Privacy</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="{% url 'logout'%}">Sign out</a></li>
+        </ul>
+      </div>
     </div>
-</div>
-<div id="main">
-    <div class="container py-3 ps-5" style="min-width: 650px;" >
-        <div class="container text-start">
-            <div class="row gx-4">
-                <div class="col-4 ps-3">
-                    <div class="fs-1">{{user.username}}</div>
-                </div>
-                <div class="col-4 text-end">
-                    <a href="{% url 'profile_update'%}"><button type="button" class="btn btn-secondary rounded-circle">Edit</button></a>
-                </div>
-            </div>
-            <div class="col-4 ps-2">
-                <div class="p-1 ">Name: {{user.profile.name}} </div>
-            </div>
-            <div class="row gx-4 gy-2 ps-2">
-                <div class="col-4">
-                    <div class="p-1 ">Year: {{user.profile.year}} </div>
-                </div>
-                <div class="col-4">
-                    <div class="p-1 ">Email: {{user.email}}</div>
-                </div>
-            </div>
-            <div class="row gx-4 gy-2 ps-2">
-                <div class="col-12">
-                    <div class="p-1 ">Bio: {{user.profile.bio}}</div>
-                </div>
-            </div> 
-        </div>
-        <hr>    
-        {% block child %}
-        {% endblock child %}
+  </div>
+</nav>
 
+<div class="col-md-5 ">
+  <section class="gradient-custom-2">
+    <div class="card">
+      <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+            alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+            {%if author == user%}
+            <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="z-index: 1;">
+              <a href="{% url 'profile_update' %}">Edit profile</a>
+            </button>
+            {% endif %}
+        </div>
+        <div class="ms-3" style="margin-top: 160px;">
+          <h5 class="text-white">{{user.username}}</h5>
+        </div>
+      </div>
+      <div class="p-4 text-black" style="background-color: #f8f9fa;">
+        <div class="d-flex justify-content-end text-center py-1">
+          <div>
+            <p class="mb-1 h5">253</p>
+            <p class="small text-muted mb-0">Photos</p>
+          </div>
+          <div class="px-3">
+            <p class="mb-1 h5">1026</p>
+            <p class="small text-muted mb-0">Followers</p>
+          </div>
+          <div>
+            <p class="mb-1 h5">478</p>
+            <p class="small text-muted mb-0">Following</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body p-4 text-black">
+        <div class="mb-5">
+          <p class="lead fw-normal mb-1">Info</p>
+          <div class="p-4" style="background-color: #f8f9fa;">
+            <p class="font-italic mb-1">Email: {{author.email}}</p>
+            <p class="font-italic mb-1">Year: {{author.profile.year}}</p>
+            <p class="font-italic mb-0">Major: Computer Science</p>
+            <p class="font-italic mb-0">Bio: {{author.profile.bio}}</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <p class="lead fw-normal mb-0">Recent photos</p>
+          <p class="mb-0"><a href="#!" class="text-muted">Show all</a></p>
+        </div>
+        <div class="row g-2">
+          <div class="col mb-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1"
+              class="w-100 rounded-3">
+          </div>
+          <div class="col mb-2">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1"
+              class="w-100 rounded-3">
+          </div>
+        </div>
+        <div class="row g-2">
+          <div class="col">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1"
+              class="w-100 rounded-3">
+          </div>
+          <div class="col">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1"
+              class="w-100 rounded-3">
+          </div>
+        </div>
+      </div>
     </div>
-    
+  </section>
 </div>
+<div class="col-md-7 p-3 border">
+  {% block child %} {% endblock child %}
+</div>
+
 
 {% endblock content %}

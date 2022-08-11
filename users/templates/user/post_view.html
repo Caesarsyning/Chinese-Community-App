@@ -1,0 +1,123 @@
+{% extends "user/profile.html" %}
+{% load crispy_forms_tags %}
+{% block child %}
+
+<nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
+    <a class="navbar-brand" href="#">MyPost</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">Resale</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">Housing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading3">Course</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading4">Event</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#scrollspyHeading3">Third</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#scrollspyHeading4">Fourth</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+    data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2" tabindex="0"
+    style="height:700px; overflow-y: scroll">
+    <h4 id="scrollspyHeading1">Resale Post</h4>
+    {% for post in resale_post %}
+    <div class="resale-home">
+        <div class="card mb-3" style="border: none; background-color:#fafafa">
+            <div class="row g-0">
+                {% if post.image %}
+                <div class="col-md-4 col-12 ">
+                    <img src="{{post.image.url}}" class="img-fluid rounded" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title"><a class="article-title d-inline-block"
+                                href="{% url 'resale-post-detail' post.id %}">{{post.title}}</a></h3>
+                        <p class="card-text"></p>
+                        <p class="card-text"><small class="text-muted">{{post.time|timesince}} ago</small></p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h3 class="card-title"><a class="article-title d-inline-block"
+                                href="{% url 'resale-post-detail' post.id %}">{{post.title}}</a></h3>
+                        <p class="card-text"></p>
+                        <p class="card-text"><small class="text-muted">{{post.time|timesince}} ago</small></p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <h4 id="scrollspyHeading2">Housing Post</h4>
+    {% for post in housing_post %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata border-bottom">
+                <h4 class="mr-2" href="#">{{ post.author }}</h4>
+                <p class="card-text d-inline-block"><small class="text-muted">{{post.date| timesince}} ago</small></p>
+            </div>
+            <h2><a class="article-title d-inline-block" href="{% url 'housing-post-detail' post.id %}">{{ post.title
+                    }}</a>
+            </h2>
+            <p class="article-content">description:{{ post.description }}</p>
+            <strong id="sold">{{post.sold}}</strong>
+        </div>
+    </article>
+    {% endfor %}
+    <h4 id="scrollspyHeading3">Course Post</h4>
+    {% for post in course_post %}
+    <div class="card mb-3" style="border: none; background-color:#fafafa">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'course-post-detail' post.id %}">{{post.title }}</a></h5>
+                    <p class="card-text">description:{{ post.description }}</p>
+                    <p class="card-text"><small class="text-muted">{{ post.date|timesince}} ago</small></p>
+                    <div style="position: absolute; right: 20px;">
+                        <img class="rounded-circle d-inline-block" style='width: 25px; height: 25px;'
+                            src="{{ post.author.profile.image.url }}">
+                        <p class="card-text d-inline-block"><strong class="text-muted">{{post.author}}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="border: 0.5px solid black;">
+    </div>
+    {% endfor %}
+    <h4 id="scrollspyHeading4">Event Post</h4>
+    {% for post in event_post %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2 d-inline-block" href="#">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y"}}</small>
+                <strong id="answered">{{post.answered}}</strong>
+            </div>
+            <h2><a class="article-title d-inline-block" href="{% url 'event-post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content"><br>description:{{ post.description }}</p>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+
+
+
+{% endblock child %}

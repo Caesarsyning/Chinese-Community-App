@@ -1,0 +1,22 @@
+{% extends "course/base.html" %}
+{% block child %}
+{% for post in posts %}
+<div class="card mb-3" style="border: none; background-color:#fafafa">
+    <div class="row g-0">
+        <div class="col-md-12">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'course-post-detail' post.id %}">{{post.title }}</a></h5>
+                <p class="card-text">description:{{ post.description }}</p>
+                <p class="card-text"><small class="text-muted">{{ post.date|timesince}} ago</small></p>
+                <div style="position: absolute; right: 20px;">
+                    <img class="rounded-circle d-inline-block" style='width: 25px; height: 25px;'
+                        src="{{ post.author.profile.image.url }}">
+                    <p class="card-text d-inline-block"><strong class="text-muted">{{post.author}}</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="border: 0.5px solid black;">
+</div>
+{% endfor %}
+{% endblock child %}

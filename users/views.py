@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -8,8 +10,27 @@ from .forms import (
     UserUpdateForm, 
     MyCustomLoginForm
 )
-
 from django.http import HttpResponse
+from housing import models as housing_models
+from resale import models as resale_models
+from course import models as course_models
+from event import models as event_models
+
+def post_view(request,pk):
+    author = User.objects.get(pk=pk)
+    housing_post = housing_models.Post.objects.filter(author=author).order_by('-date')
+    course_post = course_models.Post.objects.filter(author=author).order_by('-date')
+    resale_post = resale_models.Post.objects.filter(author=author).order_by('-date')
+    event_post = event_models.Post.objects.filter(author=author).order_by('-date')
+    context = {
+        'housing_post':housing_post,
+        'course_post':course_post,
+        'resale_post':resale_post,
+        'event_post':event_post,
+        'author':author,
+    }
+    return render(request,'user/post_view.html',context)
+
 
 
 
@@ -18,8 +39,6 @@ def logout_view(request):
     return redirect('account_login')
 
 
-def profile(request):
-    return render(request,'user/profile.html')
 
 # we want to require login before viewing the profile page
 # this will direct to the default login route, we need to set it the login url in the setting
