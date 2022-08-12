@@ -39,7 +39,7 @@ WHITENOISE_USE_FINDERS = True
 # warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
 ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
 
-
+SOCIALACCOUNT_LOGIN_ON_GET=True
 # Application definition
 INSTALLED_APPS = [
     'event.apps.EventConfig',
@@ -136,7 +136,7 @@ ACCOUNT_SESSION_REMEMBER= False
 #django-allauth registraion settings
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =7
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 
 # Password validation
@@ -190,9 +190,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK =  'bootstrap4'
+
 LOGOUT_REDIRECT_URL = 'account_login'
 LOGIN_REDIRECT_URL = 'home'
-
 LOGIN_URL = 'account_login'
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
