@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-sm base-sidebar">
+    <div class="collapse navbar-collapse">
+        <div
+            class="position-fixed top-55 bottom-0 start-0 d-flex flex-column flex-shrink-0 text-white bg-org side-bar border-right">
+            <ul class="nav nav-pills flex-column me-auto mb-2 mb-lg-0 fs-4 text-nav">
+                <li class="nav-item">
+                    <a class="nav-link my-2 home" aria-current="page" href="{% url 'home'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-2" href="{% url 'resale-home' %}">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <div class="icon-text">Resale</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'housing-home' %}">
+                        <i class="fa-solid fa-house-chimney"></i>
+                        <div class="icon-text">Housing</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-2" href="{% url 'course-home' %}">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <div class="icon-text">Course</div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link my-2" href="{% url 'event-home' %}">
+                        <i class="fa-solid fa-calendar"></i>
+                        <div class="icon-text">Event</div>
+                    </a>
+                </li>
+
+            </ul>
+            <hr>
+            <div class="dropup text-nav">
+                <a href="#" class="text-center text-decoration-none fs-4 nav-link" id="dropdownUser1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-gear"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" style="min-width: 100px;"
+                    aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Password</a></li>
+                    <li><a class="dropdown-item" href="#">Report</a></li>
+                    <li><a class="dropdown-item" href="#">Privacy</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

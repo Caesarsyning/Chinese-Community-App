@@ -1,39 +1,7 @@
-{% extends "home/base.html" %}
+{% extends "home/base2.html" %}
 {% load crispy_forms_tags %}
+{% block sidebar %} {% include "user/profile-sidebar.html" %}{% endblock sidebar %}
 {% block content %}
-<div class="position-fixed top-55 bottom-0 start-0 d-flex flex-column flex-shrink-0 text-white bg-org side-bar">
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <!-- <a href="#" class="nav-link active" aria-current="page"> -->
-        <a href="#" class="nav-link text-nav mt-3 fs-4">
-          <i class="fa-solid fa-blog"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-nav mt-3 fs-5">
-          <i class="fa-solid fa-heart"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link text-nav mt-3 fs-5">
-          <i class="fa-solid fa-star"></i>
-        </a>
-      </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="text-center text-white text-decoration-none fs-4" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="fa-solid fa-gear"></i>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">Password</a></li>
-        <li><a class="dropdown-item" href="#">Report</a></li>
-        <li><a class="dropdown-item" href="#">Privacy</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-</div>
 <div id="main">
     <div class="container" style="min-width: 650px;padding: 30px 30px;">
         <form method="POST" enctype="multipart/form-data" style="line-height: 1.5; font-size: 15px;">

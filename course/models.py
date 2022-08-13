@@ -9,8 +9,8 @@ class Post(models.Model):
     description = models.TextField()
     subject = models.CharField(null=True, blank=True,max_length=50)
     date= models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='course_author_post') 
-    likes = models.ManyToManyField(User,related_name='course_like_post')
+    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='course_author_posts') 
+    likes = models.ManyToManyField(User,related_name='course_like_posts')
     answered = models.BooleanField(default= False)
 
     def __str__(self):

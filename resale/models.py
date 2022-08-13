@@ -11,15 +11,15 @@ from django.urls import reverse
 class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    image = models.ImageField(null=True, blank=True,upload_to='profile_pics')
+    image = models.ImageField(default = 'Rotunda_logo.svg.png',null=True, blank=True,upload_to='profile_pics')
     POST_CATEGORY_CHOICES=(
     ("ask", "ask"),
     ("bid", "bid"),
 )
     post_category = models.CharField(default='ask',max_length=10,choices=POST_CATEGORY_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='object') 
-    likes = models.ManyToManyField(User,related_name='post')
+    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='resale_author_posts') 
+    likes = models.ManyToManyField(User,related_name='resale_like_posts')
     sold = models.BooleanField(default= False)
 
     def __str__(self):
@@ -35,9 +35,9 @@ class Post(models.Model):
         return reverse('resale-post-detail', kwargs={'pk':self.pk})
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='resale_post_comments')
     parent = models.ForeignKey('self',on_delete=models.CASCADE,null=True,blank=True,related_name= 'reply')
-    author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='comments')
+    author = models.ForeignKey(User,on_delete=models.CASCADE,related_name='resale_author_comments')
     date = models.DateTimeField(auto_now_add=True)
     content= models.TextField()
     

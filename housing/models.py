@@ -13,8 +13,8 @@ class Post(models.Model):
 )
     post_category = models.CharField(default='ask',max_length=10,choices=POST_CATEGORY_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='housing_author_post') 
-    likes = models.ManyToManyField(User,related_name='housing_like_post')
+    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='housing_author_posts') 
+    likes = models.ManyToManyField(User,related_name='housing_like_posts')
     sold = models.BooleanField(default= False)
 
     def __str__(self):

@@ -1,0 +1,7 @@
+    {% csrf_token %}
+    {% if user in post.likes.all %}
+        <button class="btn btn-light text-danger" type="submit"><i class="fa-solid fa-heart"></i>&nbsp;{{post.likes.count}}</button>
+    {% else %}
+        <button class="btn btn-light" type="submit"><i class="fa-regular fa-heart"></i> &nbsp;{{post.likes.count}}</button>
+    {% endif %}
+</form>

@@ -3,11 +3,6 @@ from django.forms import Textarea, TextInput
 from django.contrib.auth.models import User
 from . import models
 
-
-
-
-
-
 class CommentCreationForm(forms.ModelForm):
 
     class Meta:

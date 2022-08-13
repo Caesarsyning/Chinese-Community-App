@@ -16,4 +16,5 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(),name='housing-post-update'), 
     path('post/<int:pk>/delete/', housing_views.delete_view,name='housing-post-delete'),
     path('comment/<int:pk>/delete/', housing_views.delete_comment ,name='housing-comment-delete'), 
+    path('post/<int:pk>/like/',housing_views.like_view,name='housing-post-like'),
 ]

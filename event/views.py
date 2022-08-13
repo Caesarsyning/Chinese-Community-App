@@ -12,6 +12,20 @@ from .models import Post
 from .forms import CommentCreationForm
 from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline, TrigramSimilarity
 
+def like_view(request,pk):
+    liker = request.user
+    # the pk after = is the pk in the parameter
+    post = Post.objects.get(pk=pk)
+    liked = False
+    if post.likes.filter(pk =liker.pk).exists():
+        post.likes.remove(liker)
+        liked = False
+    else:
+        post.likes.add(liker)
+        liked = True
+    # this http_referer goes back to the previous page
+    return redirect(request.META.get('HTTP_REFERER'))
+
 
 def post_list(request):
     q = request.GET.get('q')

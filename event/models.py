@@ -9,8 +9,8 @@ class Post(models.Model):
     description = models.TextField()
 
     date= models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='event_author_post') 
-    likes = models.ManyToManyField(User,related_name='event_likes_post')
+    author = models.ForeignKey(User, on_delete = models.CASCADE,related_name='event_author_posts') 
+    likes = models.ManyToManyField(User,related_name='event_like_posts')
 
 
     def __str__(self):

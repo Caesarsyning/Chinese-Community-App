@@ -17,5 +17,6 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(),name='event-post-update'), 
     path('post/<int:pk>/delete/', event_views.delete_view,name='event-post-delete'),
     path('comment/<int:pk>/delete/', event_views.delete_comment ,name='event-comment-delete'), 
+    path('post/<int:pk>/like/',event_views.like_view,name='event-post-like'),
 ]
 

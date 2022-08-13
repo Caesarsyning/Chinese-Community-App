@@ -69,15 +69,8 @@ a {
     transform: scale(1.15);
     background-color: #f0f2f5;
 }
-.icon-text{
-    font-size: 17px;
-    text-align: center;
-    color:black;
-}
-.fa-cart-shopping, .fa-house-chimney,
-.fa-graduation-cap, .fa-calendar{
-    color:black;
-}
+
+
 @media (max-width:700px){
     body .main{
         padding-top: 130px;

@@ -15,9 +15,9 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    # def get_absolute_url(self):
-    #     # this the url to this post detail page using primarykey of this post
-    #     return reverse('profile', kwargs={'pk':self.pk})
+    def get_absolute_url(self):
+        # this the url to this post detail page using primarykey of this post
+        return reverse('profile', kwargs={'pk':self.pk})
 
     def save(self, *args, **kwargs):
         if self.pk is None:

@@ -8,3 +8,5 @@ from django.http import HttpResponse
 @login_required
 def home(request):
     return render(request,'home/home.html',context={'user':request.user})
+
+

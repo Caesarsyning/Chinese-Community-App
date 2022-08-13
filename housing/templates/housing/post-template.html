@@ -1,0 +1,24 @@
+<div class="card" style="border: none; background-color:#fafafa">
+    <div class="row g-0">
+        <div class="col-md-12">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'housing-post-detail' post.id %}">{{post.title }}<text class= 'fs-6 corner-aval' id="sold">{{post.sold}}</text></a></h5>
+                </h5>
+                <p class="card-text">{{ post.description }}</p>
+                <p class="card-text mt-3"><small class="text-muted">{{ post.date|timesince}} ago</small></p>
+                <div class="corner-name">
+                    <form method="POST" action="{% url 'housing-post-like' post.id %}">
+                    {% include "home/likes.html" %}
+                    <img class="rounded-circle d-inline-block" style='width: 25px; height: 25px;'
+                        src="{{ post.author.profile.image.url }}">
+                    <div class="card-text d-inline-block">
+                        <a href="{% url 'profile' post.author.id %}">
+                            <strong class="text-muted">{{post.author}}</strong> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr style="border: 0.5px solid black;">

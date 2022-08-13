@@ -11,7 +11,8 @@ from . import views as user_views
 
 urlpatterns = [
     path('profile/<int:pk>/',user_views.post_view,name="profile"),
-    path('profile/update',user_views.profile_update,name="profile_update"),
+    path('profile/<int:pk>/likes',user_views.likes_view,name="profile-likes"),
+    path('profile/<int:pk>/update',user_views.profile_update,name="profile_update"),
     path('logout/',user_views.logout_view,name="logout"),
     path('password-reset/',
         auth_views.PasswordResetView.as_view(template_name ='user/password_reset.html'),

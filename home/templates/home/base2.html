@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{% static 'home/header.css' %}">
     <link rel="stylesheet" href="{% static 'home/base.css' %}">
     <link rel="stylesheet" href="{% static 'home/main.css' %}">
+    <link rel="stylesheet" href="{% static 'user/profile.css' %}">
     <!-- title icon -->
     <link rel="shortcut icon" href="{{ default_icon.png}}" type="image/jpg">
 
@@ -31,28 +32,30 @@
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <!-- reference your installed Font Awesome Free package's files here -->
     <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
-
+    <title>{% block title %}{% endblock %}</title>
 
 
 </head>
 
 <body class="base">
     <!-- ***** Header Area Start ***** -->
-    {% include "home/header1.html" %}
+    {% include "home/header2.html" %}
     <!-- ###### sidebar ###### -->
-    {% include "home/sidebar.html" %}
+    {% block sidebar %} {% endblock sidebar %}
     <!-- this thing is not showing, but it is consumed -->
     {% if messages %}
     {% for message in messages %}
     {% endfor %}
     {% endif %}
+    {% block gradparent %}
     <div id="main">
-        <main role="main" class="container">
-            <div class="row ">
+        <main role="main" class="container px-2">
+            <div class="row gx-5">
                 {% block content %} {% endblock content%}
             </div>
         </main>
     </div>
+    {% endblock gradparent %}
                
 
 

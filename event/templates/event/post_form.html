@@ -1,6 +1,6 @@
 {% extends "event/base.html" %}
 {% load crispy_forms_tags %}
-{% block child %}
+{% block content %}
 <div class="content-section">
     <form method="POST">
         {% csrf_token %}
@@ -14,4 +14,4 @@
     </form>
 </div>
 
-{% endblock child%}
+{% endblock content%}

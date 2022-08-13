@@ -16,12 +16,30 @@ from resale import models as resale_models
 from course import models as course_models
 from event import models as event_models
 
+@login_required
 def post_view(request,pk):
     author = User.objects.get(pk=pk)
-    housing_post = housing_models.Post.objects.filter(author=author).order_by('-date')
-    course_post = course_models.Post.objects.filter(author=author).order_by('-date')
-    resale_post = resale_models.Post.objects.filter(author=author).order_by('-date')
-    event_post = event_models.Post.objects.filter(author=author).order_by('-date')
+    housing_post = author.housing_author_posts.all().order_by('-date')
+    course_post = author.course_author_posts.all().order_by('-date')
+    resale_post = author.resale_author_posts.all().order_by('-date')
+    event_post = author.event_author_posts.all().order_by('-date')
+    context = {
+        'housing_post':housing_post,
+        'course_post':course_post,
+        'resale_post':resale_post,
+        'event_post':event_post,
+        'author':author,
+    }
+    return render(request,'user/post_view.html',context)
+
+@login_required
+def likes_view(request,pk):
+    author = User.objects.get(pk=pk)
+    
+    housing_post = author.housing_like_posts.all().order_by('-date')
+    course_post = author.course_like_posts.all().order_by('-date')
+    resale_post = author.resale_like_posts.all().order_by('-date')
+    event_post = author.event_like_posts.all().order_by('-date')
     context = {
         'housing_post':housing_post,
         'course_post':course_post,
@@ -32,8 +50,7 @@ def post_view(request,pk):
     return render(request,'user/post_view.html',context)
 
 
-
-
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('account_login')
@@ -43,7 +60,7 @@ def logout_view(request):
 # we want to require login before viewing the profile page
 # this will direct to the default login route, we need to set it the login url in the setting
 @login_required
-def profile_update(request):
+def profile_update(request,pk):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST,instance = request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance =request.user.profile)
@@ -51,7 +68,7 @@ def profile_update(request):
             u_form.save()
             p_form.save()
             messages.success(request,f'Your account has been updated!')
-            return redirect('profile')
+            return redirect('profile',pk=pk)
     else:
         u_form = UserUpdateForm(instance = request.user)
         p_form = ProfileUpdateForm(instance = request.user.profile)
