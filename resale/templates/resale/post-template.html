@@ -7,17 +7,18 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{% url 'resale-post-detail' post.id %}">{{post.title }}<text class= 'fs-6' style="position: absolute; right: 20px;" id="sold">{{post.sold}}</text></a></h5>
+                    <h5 class="card-title"><a href="{% url 'resale-post-detail' post.id %}">{{post.title }}</h5></a>
                     <p class="card-text">{{ post.description }}</p>
                     <p class="card-text mt-3"><small class="text-muted">{{ post.date|timesince}} ago</small></p>
-                    <div class="corner-name">
-                        <form method="POST" action="{% url 'resale-post-like' post.id %}">
+                    <div class="text-end">
+                        <p class='fs-6 d-inline-block' id="sold">{{post.sold}}</p>
+                        <form class="d-inline-block" method="POST" action="{% url 'resale-post-like' post.id %}">
                         {% include "home/likes.html" %}
                         <img class="rounded-circle d-inline-block" style='width: 25px; height: 25px;'
                             src="{{ post.author.profile.image.url }}">
                         <div class="card-text d-inline-block">
                             <a href="{% url 'profile' post.author.id %}">
-                                <strong class="text-muted">{{post.author}}</strong> 
+                                <strong class="text-muted">{{post.author}}</strong>
                             </a>
                         </div>
                     </div>
@@ -28,19 +29,17 @@
                 <div class="row g-0">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <h5 class="card-title"><a href="{% url 'resale-post-detail' post.id %}">{{post.title }}<text class= 'fs-6' style="position: absolute; right: 20px;" id="sold">{{post.sold}}</text></a></h5>
-                            </h5>
+                            <h5 class="card-title"><a href="{% url 'resale-post-detail' post.id %}">{{post.title }}</h5>
                             <p class="card-text">{{ post.description }}</p>
                             <p class="card-text mt-3"><small class="text-muted">{{ post.date|timesince}} ago</small></p>
-                            <div class="corner-name">
-                                <form method="POST" action="{% url 'resale-post-like' post.id %}">
+                            <div class="text-end">
+                                <p class='fs-6 d-inline-block' id="sold">{{post.sold}}</p>
+                                <form class="d-inline-block" method="POST" action="{% url 'resale-post-like' post.id %}">
                                 {% include "home/likes.html" %}
                                 <img class="rounded-circle d-inline-block" style='width: 25px; height: 25px;'
                                     src="{{ post.author.profile.image.url }}">
                                 <div class="card-text d-inline-block">
-                                    <a href="{% url 'profile' post.author.id %}">
-                                        <strong class="text-muted">{{post.author}}</strong> 
-                                    </a>
+                                    <a href="{% url 'profile' post.author.id %}"><strong class="text-muted">{{post.author}}</strong></a>
                                 </div>
                             </div>
                         </div>
