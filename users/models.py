@@ -11,7 +11,7 @@ class Profile(models.Model):
     name = models.CharField(default='Name',max_length=50)
     year = models.CharField(default='',max_length=20)
     bio = models.TextField(blank=True,null=True)
-    image = models.ImageField(default='default.jpg',upload_to='profile_pics')
+    image = models.ImageField(default='Rotunda_logo.svg.png',upload_to='profile_pics')
     def __str__(self):
         return f'{self.user.username} Profile'
 
