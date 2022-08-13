@@ -22,8 +22,8 @@
 <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
     data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2 profile-post" tabindex="0"
     style="height:700px; overflow-y: scroll">
-    <h4 id="scrollspyHeading1">Resale Comment</h4>
     {% if resale_post %}
+    <h4 id="scrollspyHeading1">Resale Comment</h4>
     {% for comment in resale_post %}
     {% include "home/comment.html" %}
     {% endfor %}
