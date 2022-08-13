@@ -18,7 +18,7 @@ from event import models as event_models
 
 @login_required
 def post_view(request,pk):
-    author = User.objects.get(pk=pk)
+    author = get_object_or_404(User,pk=pk)
     housing_post = author.housing_author_posts.all().order_by('-date')
     course_post = author.course_author_posts.all().order_by('-date')
     resale_post = author.resale_author_posts.all().order_by('-date')
@@ -34,7 +34,7 @@ def post_view(request,pk):
 
 @login_required
 def likes_view(request,pk):
-    author = User.objects.get(pk=pk)
+    author = get_object_or_404(User,pk=pk)
     
     housing_post = author.housing_like_posts.all().order_by('-date')
     course_post = author.course_like_posts.all().order_by('-date')
