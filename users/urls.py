@@ -12,6 +12,7 @@ from . import views as user_views
 urlpatterns = [
     path('profile/<int:pk>/',user_views.post_view,name="profile"),
     path('profile/<int:pk>/likes',user_views.likes_view,name="profile-likes"),
+    path('profile/<int:pk>/comments',user_views.comments_view,name="profile-comments"),
     path('profile/<int:pk>/update',user_views.profile_update,name="profile_update"),
     path('logout/',user_views.logout_view,name="logout"),
     path('password-reset/',

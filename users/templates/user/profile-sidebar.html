@@ -15,12 +15,12 @@
               <div class="profile-icon-text">likes</div>
             </a>
           </li>
-          <!-- <li>
-            <a href="#" class="nav-link text-nav mt-3">
-              <i class="fa-solid fa-star"></i>
-              <div class="profile-icon-text">starred</div>
+          <li>
+            <a href="{% url 'profile-comments' user.id %}" class="nav-link text-nav mt-3">
+              <i class="fa-solid fa-comment-dots"></i>
+              <div class="profile-icon-text">comments</div>
             </a>
-          </li> -->
+          </li>
         </ul>
         <hr>
         <div class="dropup">

@@ -22,31 +22,31 @@
 <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
     data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2 profile-post" tabindex="0"
     style="height:700px; overflow-y: scroll">
+    <h4 id="scrollspyHeading1">Resale Comment</h4>
     {% if resale_post %}
-    <h4 id="scrollspyHeading1">Resale Post</h4>
-    {% for post in resale_post %}
-    {% include "resale/post-template.html" %}
+    {% for comment in resale_post %}
+    {% include "home/comment.html" %}
     {% endfor %}
     {% endif %}
 
     {% if housing_post %}
-    <h4 id="scrollspyHeading2">Housing Post</h4>
-    {% for post in housing_post %}
-    {% include "housing/post-template.html" %}
+    <h4 id="scrollspyHeading2">Housing Comment</h4>
+    {% for comment in housing_post %}
+    {% include "home/comment.html" %}
     {% endfor %}
     {% endif %}
 
     {% if course_post %}
-    <h4 id="scrollspyHeading3">Course Post</h4>
-    {% for post in course_post %}
-    {% include 'course/post-template.html' %}
+    <h4 id="scrollspyHeading3">Course Comment</h4>
+    {% for comment in course_post %}
+    {% include "home/comment.html" %}
     {% endfor %}
     {% endif %}
 
     {% if event_post %}
-    <h4 id="scrollspyHeading4">Event Post</h4>
-    {% for post in event_post %}
-    {% include 'event/post-template.html' %}
+    <h4 id="scrollspyHeading4">Event Comment</h4>
+    {% for comment in event_post %}
+    {% include "home/comment.html" %}
     {% endfor %}
     {% endif %}
 </div>

@@ -17,6 +17,23 @@ from course import models as course_models
 from event import models as event_models
 
 @login_required
+def comments_view(request,pk):
+    author = get_object_or_404(User,pk=pk)
+    housing_post = author.housing_author_comments.all().order_by('-date')
+    course_post = author.course_author_comments.all().order_by('-date')
+    resale_post = author.resale_author_comments.all().order_by('-date')
+    event_post = author.event_author_comments.all().order_by('-date')
+    context = {
+        'housing_post':housing_post,
+        'course_post':course_post,
+        'resale_post':resale_post,
+        'event_post':event_post,
+        'author':author,
+    }
+    return render(request,'user/comment_view.html',context)
+
+
+@login_required
 def post_view(request,pk):
     author = get_object_or_404(User,pk=pk)
     housing_post = author.housing_author_posts.all().order_by('-date')
