@@ -1,0 +1,41 @@
+{% extends "home/base2.html" %}
+{% load crispy_forms_tags %}
+{% block sidebar %} {% include "user/profile-sidebar.html" %}{% endblock sidebar %}
+{% block content %}
+<div class="col-md-5">
+  <section class="gradient-custom-2">
+    <div class="card">
+      <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+          <img src="{{ author.profile.image.url}}" alt="Generic placeholder image"
+            class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+        </div>
+        <div class="ms-3" style="margin-top: 160px;">
+          <h5 class="text-white">{{user.username}}</h5>
+        </div>
+      </div>
+      <div class="card-body p-4 text-black mt-5">
+        <div class="mb-5">
+          <p class="lead fw-normal mb-1">Info</p>
+          <div class="p-4" style="background-color: #f8f9fa;">
+            <p class="font-italic mb-1">Email: {{author.email}}</p>
+            <p class="font-italic mb-1">Year: {{author.profile.year}}</p>
+            <p class="font-italic mb-0">Major:</p>
+            <p class="font-italic mb-0">Bio: {{author.profile.bio}}</p>
+          </div>
+        </div>
+      </div>
+      {%if author == user%}
+      <a class='btn btn-light mt-3' href="{% url 'profile_update' author.id %}">
+        Edit
+      </a>
+      {% endif %}
+    </div>
+  </section>
+</div>
+<div class="col-md-7 p-4 border">
+  {% block child %} {% endblock child %}
+</div>
+
+
+{% endblock content %}

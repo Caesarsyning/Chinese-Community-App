@@ -1,0 +1,56 @@
+{% extends "user/profile.html" %}
+{% load crispy_forms_tags %}
+{% block child %}
+
+<nav id="navbar-example2" class="navbar bg-light px-3 mb-3">
+    <a class="navbar-brand" href="#">MyPost</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading1">Resale</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading2">Housing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading3">Course</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#scrollspyHeading4">Event</a>
+        </li>
+    </ul>
+</nav>
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%"
+    data-bs-smooth-scroll="true" class="scrollspy-example bg-light p-3 rounded-2 profile-post" tabindex="0"
+    style="height:700px; overflow-y: scroll">
+    {% if resale_post %}
+    <h4 id="scrollspyHeading1">Resale Post</h4>
+    {% for post in resale_post %}
+    {% include "resale/post-template.html" %}
+    {% endfor %}
+    {% endif %}
+
+    {% if housing_post %}
+    <h4 id="scrollspyHeading2">Housing Post</h4>
+    {% for post in housing_post %}
+    {% include "housing/post-template.html" %}
+    {% endfor %}
+    {% endif %}
+
+    {% if course_post %}
+    <h4 id="scrollspyHeading3">Course Post</h4>
+    {% for post in course_post %}
+    {% include 'course/post-template.html' %}
+    {% endfor %}
+    {% endif %}
+
+    {% if event_post %}
+    <h4 id="scrollspyHeading4">Event Post</h4>
+    {% for post in event_post %}
+    {% include 'event/post-template.html' %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+
+
+{% endblock child %}
