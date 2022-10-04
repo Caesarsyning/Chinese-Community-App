@@ -70,6 +70,21 @@ a {
     background-color: #f0f2f5;
 }
 
+.housing-icon{
+    transition: transform 0.3s;
+    height: 250px;
+    width: 200px;
+    border: none;
+    padding: 14px 28px;
+    font-size: 30px;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Source Serif Pro", serif;
+  }
+
+.housing-icon:hover{
+    transform: scale(1.15);
+}
 
 @media (max-width:700px){
     body .main{
@@ -96,4 +111,8 @@ a {
     .main-grid h2{
         font-size: 25px;
     }
+}
+
+.bg-pink{
+    background-color: rgb(255, 146, 146)
 }

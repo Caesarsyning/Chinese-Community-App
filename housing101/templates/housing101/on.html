@@ -1,0 +1,75 @@
+{% extends "home/base3.html" %}
+{% load static %}
+{% block gradparent %}
+<div class="container">
+    <div class="row mb-5 justify-content-center">
+        <div class="col-lg-6 text-center">
+            <div class="col d-inline-block">
+                <img class="section-title text-center mb-3 d-inline-block" style='height:60px;width:auto'
+                    src="{% static 'housing101/images/640.png' %}" alt="">
+                <h1 class="section-title text-center mt-3 d-inline-block"
+                    style="font-family: 'Source Serif Pro', serif;">On Ground</h1>
+            </div>
+        </div>
+
+
+
+        <div class="row row-cols-lg-3 g-4">
+            {% for post in posts %}
+            <div class="col-lg-4 col-md-6 col-12">
+                <a href="#{{post.name}}">
+                    <div class="card">
+                        <img src="{{post.image.url}}" class="card-img-top img-fluid" style="height: 300px;" alt="...">
+                        <div class="card-body mt-3 mb-1 text-center">
+                            <h5 class="card-title">{{post.name}}</h5>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+            {% endfor %}
+
+
+        </div>
+        <hr class="mt-5" style="border: 0.1px solid black;">
+        {% for post in posts %}
+        
+        <a class="fs-2" name="{{post.name}}"> </a>
+        <br>
+        <br>
+        <br>
+       
+        <div class="d-inline-block mt-3 mb-3">
+            <div class="row row-cols-lg-3 g-4">
+                <div class="col-md-4 d-inline-block">
+                    <img src="{{post.image.url}}" class="img-fluid rounded" style="height: 300px;" alt="...">
+                </div>
+                <div class="col-md-8 d-inline-block">
+                    <div class="card-body">
+                        <h2 class="card-title">{{post.name }}</h5>
+                        <p class="card-text mt-2">位置： {{ post.location }}</p>
+                        <p class="card-text mt-2">房型： {{ post.types }}</p>
+                        <p class="card-text mt-2">房型： {{ post.types }}</p>
+                        <p class="card-text mt-2">价格： {{ post.price }}</p>
+                        <p class="card-text mt-2">优点： {{ post.advantage }}</p>
+                        <p class="card-text mt-2">缺点： {{ post.disadvantage }}</p>
+                        <div class="text-end">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </a>
+        <br>
+        <br>
+        <br>
+
+        <hr style="border: 0.5px solid black;">
+
+        {% endfor %}
+
+
+    </div>
+
+    {% endblock gradparent %}
