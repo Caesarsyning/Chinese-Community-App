@@ -16,7 +16,7 @@ import warnings
 import logging
 
 from pathlib import Path
-django_heroku.settings(locals())
+
 # SSL redirect http to https
 SECURE_SSL_REDIRECT = True
 
@@ -280,6 +280,8 @@ POST_CATEGORY_CHOICES = (
      ("ask", "ask"),
     ("bid", "bid"),
 )
+
+django_heroku.settings(locals())
 
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
