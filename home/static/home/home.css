@@ -85,6 +85,13 @@ a {
 .housing-icon:hover{
     transform: scale(1.15);
 }
+.housing-pic{
+    transition: transform 0.3s;
+}
+
+.housing-pic:hover{
+    transform: scale(1.15);
+}
 
 @media (max-width:700px){
     body .main{
