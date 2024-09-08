@@ -43,7 +43,6 @@ ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
 SOCIALACCOUNT_LOGIN_ON_GET=True
 # Application definition
 INSTALLED_APPS = [
-    'housing101.apps.Housing101Config',
     'event.apps.EventConfig',
     'course.apps.CourseConfig',
     'resale.apps.ResaleConfig',
