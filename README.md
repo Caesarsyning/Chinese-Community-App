@@ -14,14 +14,15 @@ This project is a Django-based web application developed for the Chinese student
 
 - **Backend**: Developed using the Django framework with a Model-View-Template (MVT) pattern.
 - **Frontend**: Designed using HTML templates, Bootstrap for styling, and JavaScript for interactive elements.
-- **Database**: Deployed using Postgres on the Heroku platform.
-- **Media Storage**: Utilized AWS S3 buckets for storing images and other types of data.
+- **Database**: Deployed using MySQL in a Docker container for local development.
+- **Media Storage(Developing)**: Utilized AWS S3 buckets for storing images and other types of data.
+- **Containerization**: The application is containerized using Docker for easy deployment and development.
 
 ## Deployment
 
-The web application is deployed on the Heroku platform with data being stored in a Postgres database. AWS S3 is used for media storage.
+The web application can be deployed using Docker for local development and deployed to the Heroku platform. MySQL is used for database management, and AWS S3 is utilized for media storage.
 
-## Setup Instructions
+### Docker Setup
 
 1. Clone the repository:
 
@@ -29,13 +30,37 @@ The web application is deployed on the Heroku platform with data being stored in
     git clone <repository-url>
     ```
 
-2. Install the necessary dependencies:
+2. Build and run the Docker containers:
+
+    ```bash
+    docker-compose up --build
+    ```
+
+   This will start the Django application and the MySQL database inside Docker containers.
+
+3. Run database migrations:
+
+    ```bash
+    docker-compose exec web python manage.py migrate
+    ```
+
+4. Access the development server:
+
+    Open your browser and navigate to `http://localhost:8000`.
+
+### Manual Setup (Without Docker)
+
+1. Install the necessary dependencies:
 
     ```bash
     pip install -r requirements.txt
     ```
 
-3. Set up the database:
+2. Set up the MySQL database:
+
+    Make sure you have MySQL installed and running. Update your `settings.py` to configure the database settings for MySQL.
+
+3. Run database migrations:
 
     ```bash
     python manage.py migrate
@@ -47,14 +72,13 @@ The web application is deployed on the Heroku platform with data being stored in
     python manage.py runserver
     ```
 
-5. Deploy to Heroku:
+### Deploy to Heroku
 
-    Follow Heroku's deployment guidelines [here](https://devcenter.heroku.com/articles/deploying-python).
+Follow Heroku's deployment guidelines [here](https://devcenter.heroku.com/articles/deploying-python). Ensure you configure your Heroku app to use MySQL as the database.
 
 ## Author
 
 - **Caesar Ning**
-
 
 ## License
 
