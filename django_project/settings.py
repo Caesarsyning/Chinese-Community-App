@@ -38,7 +38,7 @@ DATABASES = {
 # }
 
 # SSL redirect http to https
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,7 +58,8 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 
 WHITENOISE_USE_FINDERS = True
 # warnings.filterwarnings("ignore", message="No directory at", module="whitenoise.base" )
-ALLOWED_HOSTS = ['caesar-first-web-app.herokuapp.com','caesarsyning.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '0.0.0.0']
+
 
 SOCIALACCOUNT_LOGIN_ON_GET=True
 # Application definition
