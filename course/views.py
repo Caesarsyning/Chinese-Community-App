@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from .models import Post,Comment
 from .forms import CommentCreationForm
-from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline, TrigramSimilarity
+
 
 def like_view(request,pk):
     liker = request.user
@@ -30,32 +30,16 @@ def like_view(request,pk):
 
 
 def post_list(request):
-    q = request.GET.get('q')
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description')
-        # what info you are searching for
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        course = Post.objects.filter(title__icontains=q)
-    else:
-        course = Post.objects.all().order_by('-date')
+
+    course = Post.objects.all().order_by('-date')
     context={
         'posts': course,
     }
     return render(request, 'course/main.html',context)
 
 def post_list_bid(request):
-    q = request.GET.get('q')
 
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description')
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        course = Post.objects.filter(title__icontains=q)
-    else:
-        course = Post.objects.all().order_by('-date')
+    course = Post.objects.all().order_by('-date')
     context={
         'posts': course,
     }

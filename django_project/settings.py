@@ -11,11 +11,31 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 import django_heroku
-
 import warnings
 import logging
 
 from pathlib import Path
+
+# Database
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),  # This refers to the MySQL service in the Docker network
+        'PORT': '3306',  # MySQL's default port
+    }
+}
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # SSL redirect http to https
 SECURE_SSL_REDIRECT = True
@@ -65,7 +85,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # add the below app for google authentication to work
     'allauth.socialaccount.providers.google',
-    'django.contrib.postgres',
 ]
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -99,16 +118,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 AUTHENTICATION_BACKENDS = [
     # django's inbuild authentication backend

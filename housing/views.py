@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from .models import Post,Comment
 from .forms import CommentCreationForm
-from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline
+
 
 def like_view(request,pk):
     liker = request.user
@@ -28,37 +28,16 @@ def like_view(request,pk):
 
 
 def post_list(request):
-    q = request.GET.get('q')
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description')
-        # what info you are searching for
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        # housing= Post.objects.annotate(search=vector).filter(search=query)
-        # housing= Post.objects.annotate(rank=SearchRank(vector,query)).annotate(headline=search_headline).filter(rank__gte=0.001).order_by('-rank')
-        housing = Post.objects.filter(title__icontains=q)
-    else:
-        housing = Post.objects.filter(post_category='ask').order_by('-date')
+
+    housing = Post.objects.filter(post_category='ask').order_by('-date')
     context={
         'posts': housing,
     }
     return render(request, 'housing/main.html',context)
 
 def post_list_bid(request):
-    q = request.GET.get('q')
 
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description')
-        # what info you are searching for
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        # housing= Post.objects.annotate(search=vector).filter(search=query)
-        # housing= Post.objects.annotate(rank=SearchRank(vector,query)).annotate(headline=search_headline).filter(rank__gte=0.001).order_by('-rank')
-        housing = Post.objects.filter(title__icontains=q)
-    else:
-        housing = Post.objects.filter(post_category='bid').order_by('-date')
+    housing = Post.objects.filter(post_category='bid').order_by('-date')
     context={
         'posts': housing,
     }

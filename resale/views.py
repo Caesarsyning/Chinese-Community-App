@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from .models import Post,Comment
 from .forms import CommentCreationForm
-from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline, TrigramSimilarity
+
 
 def like_view(request,pk):
     liker = request.user
@@ -28,33 +28,16 @@ def like_view(request,pk):
 
 
 def post_list(request):
-    q = request.GET.get('q')
 
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description')
-        # what info you are searching for
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        resale = Post.objects.filter(title__icontains=q)
-    else:
-        resale = Post.objects.filter(post_category='ask').order_by('-date')
+    resale = Post.objects.filter(post_category='ask').order_by('-date')
     context={
         'posts': resale,
     }
     return render(request, 'resale/main.html',context)
 
 def post_list_bid(request):
-    q = request.GET.get('q')
 
-    if q:
-        # where you wanna search
-        vector = SearchVector('title','description',config='french')
-        query = SearchQuery(q)
-        search_headline = SearchHeadline('description',query)
-        resale = Post.objects.filter(title__icontains=q)
-    else:
-        resale = Post.objects.filter(post_category='bid').order_by('-date')
+    resale = Post.objects.filter(post_category='bid').order_by('-date')
     context={
         'posts': resale,
     }
